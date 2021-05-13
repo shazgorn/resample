@@ -47,7 +47,8 @@ const (
 	F32 = 0 // 32-bit floating point PCM
 	F64 = 1 // 64-bit floating point PCM
 	I32 = 2 // 32-bit signed linear PCM
-	I16 = 3 // 16-bit signed linear PCM
+	I24 = 3 // 24-bit signed linear PCM
+	I16 = 4 // 16-bit signed linear PCM
 
 	byteLen = 8
 )
@@ -92,6 +93,8 @@ func New(writer io.Writer, inputRate, outputRate float64, channels, format, qual
 		size = 64 / byteLen
 	case F32, I32:
 		size = 32 / byteLen
+	case I24:
+		size = 24 / byteLen
 	case I16:
 		size = 16 / byteLen
 	default:
